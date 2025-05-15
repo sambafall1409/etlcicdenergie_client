@@ -5,16 +5,16 @@ jobs:
     tasks:
       - task_key: extract_bronze
         notebook_path: notebooks/bronze_extract.ipynb
-        existing_cluster_id: 0514-142506-dv09e6dz
+        existing_cluster_id: 0515-081838-txxnxpcl
 
       - task_key: transform_silver
         depends_on:
           - extract_bronze
         notebook_path: notebooks/silver_transform.ipynb
-        existing_cluster_id: 0514-142506-dv09e6dz
+        existing_cluster_id: 0515-081838-txxnxpcl
 
       - task_key: model_gold
         depends_on:
           - transform_silver
         notebook_path: notebooks/gold_modeling.ipynb
-        existing_cluster_id: 0514-142506-dv09e6dz
+        existing_cluster_id: 0515-081838-txxnxpcl
