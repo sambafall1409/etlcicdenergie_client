@@ -16,12 +16,12 @@ targets:
     mode: development
     default: true
     workspace:
-      host: https://adb-3433378986990545.5.azuredatabricks.net
+      host: https://adb-2576901279847427.7.azuredatabricks.net
 
   prod:
     mode: production
     workspace:
-      host: https://adb-3433378986990545.5.azuredatabricks.net
+      host: https://adb-2576901279847427.7.azuredatabricks.net
       # We explicitly deploy to /Workspace/Users/fall.e2205085@etud.univ-ubs.fr to make sure we only have a single copy.
       root_path: /Workspace/Users/fall.e2205085@etud.univ-ubs.fr/.bundle/${bundle.name}/${bundle.target}
     permissions:
