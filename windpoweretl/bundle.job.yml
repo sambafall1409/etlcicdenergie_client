@@ -2,31 +2,19 @@ name: etl-pipeline-job
 
 jobs:
   - name: etl-job
-    schedule:
-      quartz_cron_expression: "0 0 0 1/3 * ?"
-      timezone_id: "Europe/Paris"
     tasks:
       - task_key: extract_bronze
-        notebook_path: ./notebooks/bronze_extract.py
-        new_cluster:
-          spark_version: 13.3.x-scala2.12
-          node_type_id: Standard_DS3_v2
-          num_workers: 2
+        notebook_path: notebooks/bronze_extract.ipynb
+        existing_cluster_id: 0514-142506-dv09e6dz
 
       - task_key: transform_silver
         depends_on:
           - extract_bronze
-        notebook_path: ./notebooks/silver_transform.py
-        new_cluster:
-          spark_version: 13.3.x-scala2.12
-          node_type_id: Standard_DS3_v2
-          num_workers: 2
+        notebook_path: notebooks/silver_transform.ipynb
+        existing_cluster_id: 0514-142506-dv09e6dz
 
       - task_key: model_gold
         depends_on:
           - transform_silver
-        notebook_path: ./notebooks/gold_modeling.py
-        new_cluster:
-          spark_version: 13.3.x-scala2.12
-          node_type_id: Standard_DS3_v2
-          num_workers: 2
+        notebook_path: notebooks/gold_modeling.ipynb
+        existing_cluster_id: 0514-142506-dv09e6dz
